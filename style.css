@@ -174,7 +174,7 @@ img:not([src]) {
 
 @-webkit-keyframes fade {
     from {
-        opacity: .4
+        opacity: .2
     }
     to {
         opacity: 1
@@ -183,7 +183,7 @@ img:not([src]) {
 
 @keyframes fade {
     from {
-        opacity: .4
+        opacity: .2
     }
     to {
         opacity: 1
@@ -263,6 +263,12 @@ canvas {
     position: fixed;
     top: 0;
     left: 0;
+}
+
+.pop {
+    display: block;
+    width: 100%;
+    height: 100%
 }
 
 .photo,

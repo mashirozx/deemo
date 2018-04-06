@@ -59,7 +59,8 @@
 
 
     <div class="photo">
-        <a href="javascript:screenshot();"><img src="src/camera.svg" class="css-1bgbwga" data-reactid="50">
+        <a href="javascript:screenshot();">
+            <div class="pop"><img src="src/camera.svg" class="css-1bgbwga" data-reactid="50"></div>
         </a>
     </div>
 
@@ -68,24 +69,28 @@
     </div>
 
     <div class="github">
-        <a href="https://github.com/mashirozx/deemo" target="_blank"><img src="src/github.svg" class="css-1bgbwga" data-reactid="50">
+        <a href="https://github.com/mashirozx/deemo" target="_blank">
+            <div class="pop"><img src="src/github.svg" class="css-1bgbwga" data-reactid="50"></div>
         </a>
     </div>
 
     <div class="weibo">
-        <a href="https://weibo.com/2960337711" target="_blank"><img src="src/weibo.svg" class="css-1bgbwga" data-reactid="50">
+        <a href="https://weibo.com/2960337711" target="_blank">
+            <div class="pop"><img src="src/weibo.svg" class="css-1bgbwga" data-reactid="50"></div>
         </a>
     </div>
 
     <div class="wordpress">
-        <a href="https://2heng.xin/" target="_blank"><img src="src/wordpress.svg" class="css-1bgbwga" data-reactid="50">
+        <a href="https://2heng.xin/" target="_blank">
+            <div class="pop"><img src="src/wordpress.svg" class="css-1bgbwga" data-reactid="50"></div>
         </a>
     </div>
 
     <div id="screenshot" class="overlay">
         <div class="save">
-            <a href="javascript:downloadCanvas();"><img src="src/save.svg" class="css-1bgbwga" data-reactid="50">
-        </a>
+            <a href="javascript:downloadCanvas();">
+                <div class="pop"><img src="src/save.svg" class="css-1bgbwga" data-reactid="50"></div>
+            </a>
         </div>
         <div class="popup">
             <a class="close" href="#">&times;</a>
@@ -111,6 +116,8 @@
     <script src="src/html2canvas.min.js"></script>
 
     <script>
+        "use strict";
+
         if (screen.width <= 1100) {
             location.href = "#message";
         }
@@ -141,28 +148,12 @@
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
             }
+            document.title = (slideIndex - 1) + '/' + slides.length + ' | Deemo 复刻 - by Mashiro';
+            console.log(slideIndex - 1);
+            lazyload(slideIndex - 1);
+            lazyload(slideIndex + 1);
+            lazyload(slides.length - slideIndex + 2);
             slides[slideIndex - 1].style.display = "block";
-            if (n == 1) {
-                document.title = '1/' + slides.length + ' | Deemo 复刻 - by Mashiro';
-                lazyload(n - 1);
-                lazyload(n);
-            } else {
-                var page = 0;
-                n == 0 ? page = slides.length : page = n;
-                n > slides.length ? page = 1 : page = page;
-                document.title = page + '/' + slides.length + ' | Deemo 复刻 - by Mashiro';
-                lazyload(n);
-                //console.log(n);
-                var prev = imgArray.length;
-                //console.log(n);
-                //console.log(prev-1);
-                if (prev - 1 == -1) {
-                    lazyload(prev - 1);
-                } else {
-                    lazyload(n - 1);
-                    lazyload(n - 2);
-                }
-            }
         }
 
         function lazyload(n) {
@@ -176,7 +167,6 @@
         lazyload(imgArray.length - 1);
 
         function saveFile(url) {
-            //var filename = url.substring(url.lastIndexOf("/") + 1).split("?")[0];
             var filename = "deemo.png";
             var xhr = new XMLHttpRequest();
             xhr.responseType = 'blob';
@@ -187,7 +177,7 @@
                 a.style.display = 'none';
                 document.body.appendChild(a);
                 a.click();
-                delete a;
+                a = null;
             };
             xhr.open('GET', url);
             xhr.send();
@@ -195,17 +185,15 @@
 
         // Random
         function randomSlide() {
-            rand = Math.floor(Math.random() * (imgArray.length + 1));
+            var rand = Math.floor(Math.random() * (imgArray.length + 1));
             //console.log(rand);
             lazyload(rand);
-            lazyload(rand + 1);
-            lazyload(rand - 1);
             plusSlides(rand, true);
         }
         randomSlide();
 
         // Timeout
-        var int = self.setInterval("randomSlide()", 5000);
+        var int = self.setInterval("randomSlide()", 6000);
 
         function downloadCanvas() {
             var src = document.getElementsByTagName("canvas")[0];
@@ -214,28 +202,15 @@
         }
 
         function screenshot() {
-            document.getElementsByClassName('photo')[0].style.visibility = 'hidden';
-            document.getElementsByClassName('iplayer')[0].style.visibility = 'hidden';
-            document.getElementsByClassName('weibo')[0].style.visibility = 'hidden';
-            document.getElementsByClassName('github')[0].style.visibility = 'hidden';
-            document.getElementsByClassName('wordpress')[0].style.visibility = 'hidden';
-            document.getElementsByClassName('signature')[0].style.visibility = 'hidden';
-            document.getElementsByClassName('prev')[0].style.visibility = 'hidden';
-            document.getElementsByClassName('next')[0].style.visibility = 'hidden';
+            var sholdHide = new Array("photo", "iplayer", "weibo", "github", "wordpress", "signature", "prev", "next");
+            for (var i = 0; i < sholdHide.length; i++) document.getElementsByClassName(sholdHide[i])[0].style.visibility = 'hidden';
 
             html2canvas(document.body).then(function(canvas) {
                 document.getElementById("scerrn-content").appendChild(canvas);
                 location.href = "#screenshot";
             });
 
-            document.getElementsByClassName('photo')[0].style.visibility = 'visible';
-            document.getElementsByClassName('iplayer')[0].style.visibility = 'visible';
-            document.getElementsByClassName('weibo')[0].style.visibility = 'visible';
-            document.getElementsByClassName('github')[0].style.visibility = 'visible';
-            document.getElementsByClassName('wordpress')[0].style.visibility = 'visible';
-            document.getElementsByClassName('signature')[0].style.visibility = 'visible';
-            document.getElementsByClassName('prev')[0].style.visibility = 'visible';
-            document.getElementsByClassName('next')[0].style.visibility = 'visible';
+            for (var i = 0; i < sholdHide.length; i++) document.getElementsByClassName(sholdHide[i])[0].style.visibility = 'visible';
         }
 
         // Player
