@@ -105,6 +105,31 @@ PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAw
         }
         
         var imgArray = document.getElementsByClassName("deemo-draw");
+        
+        // Random
+        if (false) {                
+            var arr = [];var imgArrayOld = [];
+            for(var n = 0; n < imgArray.length; n++) imgArrayOld[n] = imgArray[n];
+            function randomSort(a, b) { 
+                return Math.random() > 0.5 ? -1 : 1; 
+            }
+            
+            for(var n = 0; n < imgArray.length; n++) arr[n] = n;
+            arr.sort(randomSort);
+            
+            //for(var n = 0; n < imgArray.length; n++) {id = arr[n]; imgArray[n] = imgArrayOld[id];}
+            console.log('imgArray[0]');
+            console.log(imgArray[0]);
+            console.log('imgArrayOld[200]');
+            console.log(imgArrayOld[200]);
+            var temp = imgArrayOld[200];
+            imgArray[0] = temp;
+            console.log('imgArray[0]');
+            console.log(imgArray[0]);
+            console.log('imgArrayOld[200]');
+            console.log(imgArrayOld[200]);
+        }
+        
         var slideIndex = 1;
         showSlides(slideIndex);
 
@@ -130,11 +155,14 @@ PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAw
             }
             slides[slideIndex - 1].style.display = "block";
             if (n == 1) {
-                document.title = 'Deemo 复刻 - by Mashiro';
+                document.title = '1/' + slides.length + ' | Deemo 复刻 - by Mashiro';
                 lazyload(n-1);
                 lazyload(n);
             } else {
-                document.title = (n - 1) + '/' + slides.length + ' | Deemo 复刻 - by Mashiro';
+                var page = 0;
+                n == 0 ? page = slides.length : page = n;
+                n > slides.length ? page = 1 : page = page;
+                document.title = page + '/' + slides.length + ' | Deemo 复刻 - by Mashiro';
                 lazyload(n);
                 //console.log(n);
                 var prev = imgArray.length;
