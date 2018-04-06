@@ -45,6 +45,12 @@
             text-align: center
         }
 
+        @media screen and (max-width: 900px) {
+            .dear-alice {
+                display: none
+            }
+        }
+
         .dear-alice p {
             text-align: right
         }
@@ -203,6 +209,12 @@
             transition: all 2s ease-in-out;
         }
 
+        .normal {
+            margin: 70px auto;
+            background: #fff;
+            width: 30%;
+        }
+
         .popup .close {
             position: absolute;
             top: 20px;
@@ -251,6 +263,10 @@
         }
 
     </style>
+    <script>
+        if (screen.width <= 500) alert("屏幕宽度在500像素以上才能正常排版，把屏幕横过来试试？");
+
+    </script>
 </head>
 
 <body>
@@ -283,12 +299,24 @@ PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAw
             <a class="close" href="#">&times;</a>
             <div id="scerrn-content"></div>
         </div>
-
+    </div>
+    <div id="message" class="overlay">
+        <div class="popup normal">
+            <h2>Here i am</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                屏幕宽度在500像素以上才能正常排版，把屏幕横过来试试？
+            </div>
+        </div>
     </div>
 
     <script src="src/html2canvas.min.js"></script>
 
     <script>
+        if (screen.width <= 500) {
+            location.href = "#message";
+        }
+
         var slideIndex = 1;
         showSlides(slideIndex);
 
