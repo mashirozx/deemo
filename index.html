@@ -625,9 +625,6 @@
             <img data-src="trans/k10music.png">
         </div>
        <div class="mySlides fade">
-            <img data-src="trans/key.png">
-        </div>
-       <div class="mySlides fade">
             <img data-src="trans/land_of_giants_s.png">
         </div>
        <div class="mySlides fade">
@@ -1216,9 +1213,6 @@
             <img data-src="trans/v32whitefantasy.png">
         </div>
        <div class="mySlides fade">
-            <img data-src="trans/vase.png">
-        </div>
-       <div class="mySlides fade">
             <img data-src="trans/veritas.png">
         </div>
        <div class="mySlides fade">
@@ -1326,12 +1320,13 @@ PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAw
             slides[slideIndex - 1].style.display = "block";
             if (n == 1) {
                 document.title = 'Deemo 曲绘集 - by Mashiro';
-                lazyload(0)
+                lazyload(0);
                 document.title = 'Deemo 曲绘集 - by Mashiro';
-                lazyload(n)
+                lazyload(n);
             } else {
                 document.title = (n - 1) + '/' + slides.length + ' | Deemo 曲绘集 - by Mashiro';
-                lazyload(n)
+                lazyload(n);
+                lazyload(n-2);
             }
         }
 
