@@ -1,4 +1,4 @@
-﻿Deemo 曲绘集 - by Mashiro
+﻿Deemo 曲绘集复刻 - by Mashiro
 ===
 
 ### 样式定制
