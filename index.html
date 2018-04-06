@@ -54,7 +54,7 @@
             font-size: 20px;
             position: fixed;
             left: 15px;
-            bottom: 5px
+            top: 5px
         }
 
         .signature a {
@@ -166,6 +166,88 @@
             .text {
                 font-size: 11px
             }
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .overlay:target {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .overlay:target .save {
+            display: block !important;
+        }
+
+        .overlay:target .photo {
+            display: none!important;
+        }
+
+        .popup {
+            margin: 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0);
+            border-radius: 5px;
+            width: 100%;
+            height: 100% position: relative;
+            transition: all 2s ease-in-out;
+        }
+
+        .popup .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: all 200ms;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .popup .content {
+            max-height: 30%;
+            overflow: auto;
+        }
+
+        canvas {
+            transform: scale(0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .photo,
+        .save {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            padding: 10px;
+            background-color: #333;
+            cursor: pointer;
+            transform: translate(50%, -50%);
+            border-radius: 50%;
+            visibility: visible;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo {
+            display: block
+        }
+
+        .save {
+            display: none
         }
 
     </style>
@@ -1158,8 +1240,27 @@
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
     </div>
-    
-    <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+
+
+    <div class="photo">
+        <a href="javascript:screenshot();"><img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmZmZmIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMuMiIvPgogICAgPHBhdGggZD0iTTkgMkw3LjE3IDRINGMtMS4xIDAtMiAuOS0yIDJ2MTJjMCAxLjEuOSAyIDIgMmgxNmMxLjEgMCAyLS45IDItMlY2YzAtMS4xLS45LTItMi0yaC0zLjE3TDE1IDJIOXptMyAxNWMtMi43NiAwLTUtMi4yNC01LTVzMi4yNC01IDUtNSA1IDIuMjQgNSA1LTIuMjQgNS01IDV6Ii8+CiAgICA8cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+Cjwvc3ZnPgo=" class="css-1bgbwga" data-reactid="50">
+        </a>
+    </div>
+
+    <div id="screenshot" class="overlay">
+        <div class="save">
+            <a href="javascript:downloadCanvas();"><img src="data:image/svg+xml;base64,
+PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDQ1OSA0NTkiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ1OSA0NTk7IiB4bWw6c3BhY2U9InByZXNlcnZlIiBjbGFzcz0iIj48ZyB0cmFuc2Zvcm09Im1hdHJpeCgwLjg2ODY1OSwgMCwgMCwgMC44Njg2NTksIDMwLjE0MjcsIDMwLjE0MjcpIj48Zz4KCTxnIGlkPSJzYXZlIj4KCQk8cGF0aCBkPSJNMzU3LDBINTFDMjIuOTUsMCwwLDIyLjk1LDAsNTF2MzU3YzAsMjguMDUsMjIuOTUsNTEsNTEsNTFoMzU3YzI4LjA1LDAsNTEtMjIuOTUsNTEtNTFWMTAyTDM1NywweiBNMjI5LjUsNDA4ICAgIGMtNDMuMzUsMC03Ni41LTMzLjE1LTc2LjUtNzYuNXMzMy4xNS03Ni41LDc2LjUtNzYuNWM0My4zNSwwLDc2LjUsMzMuMTUsNzYuNSw3Ni41UzI3Mi44NSw0MDgsMjI5LjUsNDA4eiBNMzA2LDE1M0g1MVY1MWgyNTVWMTUzICAgIHoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6I0ZGRkZGRiIgZGF0YS1vbGRfY29sb3I9IiNmZmZmZmYiPjwvcGF0aD4KCTwvZz4KPC9nPjwvZz4gPC9zdmc+" class="css-1bgbwga" data-reactid="50">
+        </a>
+        </div>
+        <div class="popup">
+            <a class="close" href="#">&times;</a>
+            <div id="scerrn-content"></div>
+        </div>
+
+    </div>
+
+    <script src="src/html2canvas.min.js"></script>
 
     <script>
         var slideIndex = 1;
@@ -1203,7 +1304,8 @@
         }
 
         function saveFile(url) {
-            var filename = url.substring(url.lastIndexOf("/") + 1).split("?")[0];
+            //var filename = url.substring(url.lastIndexOf("/") + 1).split("?")[0];
+            var filename = "deemo.png";
             var xhr = new XMLHttpRequest();
             xhr.responseType = 'blob';
             xhr.onload = function() {
@@ -1217,6 +1319,30 @@
             };
             xhr.open('GET', url);
             xhr.send();
+        }
+
+
+        function downloadCanvas() {
+            var src = document.getElementsByTagName("canvas")[0];
+            var img = src.toDataURL("image/png");
+            saveFile(img);
+        }
+
+        function screenshot() {
+            document.getElementsByClassName('photo')[0].style.visibility = 'hidden';
+            document.getElementsByClassName('signature')[0].style.visibility = 'hidden';
+            document.getElementsByClassName('prev')[0].style.visibility = 'hidden';
+            document.getElementsByClassName('next')[0].style.visibility = 'hidden';
+
+            html2canvas(document.body).then(function(canvas) {
+                document.getElementById("scerrn-content").appendChild(canvas);
+                location.href = "#screenshot";
+            });
+
+            document.getElementsByClassName('photo')[0].style.visibility = 'visible';
+            document.getElementsByClassName('signature')[0].style.visibility = 'visible';
+            document.getElementsByClassName('prev')[0].style.visibility = 'visible';
+            document.getElementsByClassName('next')[0].style.visibility = 'visible';
         }
 
     </script>
