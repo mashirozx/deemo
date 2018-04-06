@@ -1330,8 +1330,9 @@ PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAw
         }
 
         function lazyload(n) {
-            var x = document.getElementsByTagName("img")[n].getAttribute("data-src");
-            document.getElementsByTagName("img")[n].setAttribute("src", x);
+            var imgArray = document.getElementsByTagName("img")
+            var x = imgArray[n].getAttribute("data-src");
+            imgArray[n].setAttribute("src", x);
         }
 
         function saveFile(url) {
