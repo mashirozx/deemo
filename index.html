@@ -57,6 +57,14 @@
             bottom: 5px
         }
 
+        .signature a {
+            color: #333
+        }
+
+        .signature a:hover {
+            color: #333
+        }
+
         .mySlides {
             display: none
         }
@@ -165,8 +173,10 @@
 
 <body>
     <div class="slideshow-container">
-        <div class="dear-alice">To the lovely, loney stranger<br>And my dearest brother,<br>Hans.<p>-Alice</p></div>
-        <div class="signature">Proudly Powered by Mashiro</div>
+        <div class="dear-alice">To the lovely, loney stranger<br>And my dearest brother,<br>Hans.
+            <p>-Alice</p>
+        </div>
+        <div class="signature">Proudly Powered by <a href="https://2heng.xin" target="_blank">Mashiro</a></div>
         <div>
 
 
@@ -1148,7 +1158,8 @@
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
     </div>
-    <br>
+    
+    <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 
     <script>
         var slideIndex = 1;
@@ -1178,15 +1189,34 @@
             if (n == 1) {
                 document.title = 'Deemo 曲绘集 - by Mashiro';
                 lazyload(0)
+                document.title = 'Deemo 曲绘集 - by Mashiro';
+                lazyload(n)
             } else {
                 document.title = (n - 1) + '/' + slides.length + ' | Deemo 曲绘集 - by Mashiro';
-                lazyload(n - 1)
+                lazyload(n)
             }
         }
 
         function lazyload(n) {
             var x = document.getElementsByTagName("img")[n].getAttribute("data-src");
             document.getElementsByTagName("img")[n].setAttribute("src", x);
+        }
+
+        function saveFile(url) {
+            var filename = url.substring(url.lastIndexOf("/") + 1).split("?")[0];
+            var xhr = new XMLHttpRequest();
+            xhr.responseType = 'blob';
+            xhr.onload = function() {
+                var a = document.createElement('a');
+                a.href = window.URL.createObjectURL(xhr.response);
+                a.download = filename;
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                delete a;
+            };
+            xhr.open('GET', url);
+            xhr.send();
         }
 
     </script>
