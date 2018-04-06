@@ -1330,21 +1330,22 @@ PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAw
                 document.title = 'Deemo 曲绘集 - by Mashiro';
                 lazyload(n-1);
                 lazyload(n);
-                lazyload(320);
             } else {
                 document.title = (n - 1) + '/' + slides.length + ' | Deemo 曲绘集 - by Mashiro';
                 lazyload(n);
-                console.log(n);
+                //console.log(n);
                 var prev = imgArray.length;
-                console.log(n);
-                console.log(prev-1);
-                if (prev-1 == -1) {lazyload(prev-1);}else{lazyload(n-1);}
+                //console.log(n);
+                //console.log(prev-1);
+                if (prev-1 == -1) {lazyload(prev-1);}else{lazyload(n-1);lazyload(n-2);}
             }
         }
         
         function lazyload(n) {
+            //console.log(n);
             imgArray[n].setAttribute("src", imgArray[n].getAttribute("data-src"));
         }
+        lazyload(imgArray.length-1);
         function saveFile(url) {
             //var filename = url.substring(url.lastIndexOf("/") + 1).split("?")[0];
             var filename = "deemo.png";
