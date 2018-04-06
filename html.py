@@ -2,7 +2,7 @@ import os
 from os import listdir
 from os.path import isfile, join
 
-path = 'trans/'
+path = 'tiny/'
 
 with open('test.html', 'r',encoding='utf8') as file:
     data=file.read()
@@ -17,7 +17,7 @@ str = ''
 for f in onlyfiles:
     str = str + '''
        <div class="mySlides fade">
-            <img class="deemo-draw" data-src="trans/''' + f + '''">
+            <img class="deemo-draw" data-src="tiny/''' + f + '''">
         </div>'''
 
 data = data.replace('{python-work-area}', str).replace('{python-style}', style) 
