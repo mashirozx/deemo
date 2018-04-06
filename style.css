@@ -38,7 +38,7 @@ body {
     font-family: Fantique, RocknRoll;
     font-size: 50px;
     position: absolute;
-    top: 55%;
+    top: 60%;
     transform: translateY(-50%);
     left: 50px;
     text-align: center;
@@ -255,6 +255,7 @@ canvas {
 }
 
 .photo,
+.iplayer,
 .save,
 .github,
 .weibo,
@@ -291,4 +292,33 @@ canvas {
 
 .wordpress {
     left: 270px;
+}
+
+.iplayer {
+    left: 360px;
+}
+
+body {
+  background-color: #000000;
+}
+
+/* Give the player a height & width of 0. Otherwise the player is visible on mobile devices (tested on iPhone 5). */
+
+#player {
+  height: 0;
+  width: 0
+}
+
+.speaker {
+    background-image: url(./src/play.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 100% 0;
+    height: 50px;
+    width: 50px;
+    display: block;
+}
+
+.speakerplay {
+    background-image: url(./src/pause.svg);
 }
