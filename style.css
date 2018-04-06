@@ -54,7 +54,8 @@ body {
     font-size: 20px;
     position: fixed;
     left: 15px;
-    top: 5px
+    top: 5px;
+    z-index: 9999
 }
 
 .signature a {
@@ -63,15 +64,6 @@ body {
 
 .signature a:hover {
     color: #333
-}
-
-@media screen and (max-width: 900px) {
-    .dear-alice {
-        display: none
-    }
-    .signature {
-        font-size: 15px
-    }
 }
 
 .mySlides {
@@ -93,10 +85,30 @@ img:not([src]) {
     visibility: hidden;
 }
 
+@media screen and (max-width: 900px) {
+    .dear-alice {
+        display: none
+    }
+    .signature {
+        font-size: 15px
+    }
+    .mySlides {
+        position: absolute;
+        right: 0px;
+        height: auto;
+        width: 100%
+    }
+
+    img {
+        vertical-align: middle;
+        height: auto;
+        width: 100%
+    }
+}
+
 /* Slideshow container */
 
 .slideshow-container {
-    height: 100vh position: relative;
     margin: auto;
 }
 
@@ -216,7 +228,7 @@ img:not([src]) {
 .normal {
     margin: 70px auto;
     background: #fff;
-    width: 30%;
+    width: 80%;
 }
 
 .popup .close {
@@ -243,7 +255,10 @@ canvas {
 }
 
 .photo,
-.save {
+.save,
+.github,
+.weibo,
+.wordpress {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -264,4 +279,16 @@ canvas {
 
 .save {
     display: none
+}
+
+.github {
+    left: 90px;
+}
+
+.weibo {
+    left: 180px;
+}
+
+.wordpress {
+    left: 270px;
 }
