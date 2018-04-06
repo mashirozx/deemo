@@ -117,37 +117,12 @@
 
         var imgArray = document.getElementsByClassName("deemo-draw");
 
-        // Random
-        if (false) {
-            var arr = [];
-            var imgArrayOld = [];
-            for (var n = 0; n < imgArray.length; n++) imgArrayOld[n] = imgArray[n];
-
-            function randomSort(a, b) {
-                return Math.random() > 0.5 ? -1 : 1;
-            }
-
-            for (var n = 0; n < imgArray.length; n++) arr[n] = n;
-            arr.sort(randomSort);
-            // 对象赋值无效是什么状况。。
-            //for(var n = 0; n < imgArray.length; n++) {id = arr[n]; imgArray[n] = imgArrayOld[id];}
-            console.log('imgArray[0]');
-            console.log(imgArray[0]);
-            console.log('imgArrayOld[200]');
-            console.log(imgArrayOld[200]);
-            var temp = imgArrayOld[200];
-            imgArray[0] = temp;
-            console.log('imgArray[0]');
-            console.log(imgArray[0]);
-            console.log('imgArrayOld[200]');
-            console.log(imgArrayOld[200]);
-        }
-
         var slideIndex = 1;
         showSlides(slideIndex);
 
-        function plusSlides(n) {
+        function plusSlides(n, m = false) {
             showSlides(slideIndex += n);
+            if (!m) int = window.clearInterval(int);
         }
 
         function currentSlide(n) {
@@ -191,8 +166,12 @@
         }
 
         function lazyload(n) {
-            //console.log(n);
-            imgArray[n].setAttribute("src", imgArray[n].getAttribute("data-src"));
+            if (n > imgArray.length - 1) n = n - imgArray.length;
+            try {
+                imgArray[n].setAttribute("src", imgArray[n].getAttribute("data-src"));
+            } catch (err) {
+                console.log("error = " + n);
+            }
         }
         lazyload(imgArray.length - 1);
 
@@ -214,6 +193,19 @@
             xhr.send();
         }
 
+        // Random
+        function randomSlide() {
+            rand = Math.floor(Math.random() * (imgArray.length + 1));
+            //console.log(rand);
+            lazyload(rand);
+            lazyload(rand + 1);
+            lazyload(rand - 1);
+            plusSlides(rand, true);
+        }
+        randomSlide();
+
+        // Timeout
+        var int = self.setInterval("randomSlide()", 5000);
 
         function downloadCanvas() {
             var src = document.getElementsByTagName("canvas")[0];
