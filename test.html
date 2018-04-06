@@ -330,7 +330,8 @@ PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAw
         if (screen.width <= 500) {
             location.href = "#message";
         }
-
+        
+        var imgArray = document.getElementsByClassName("deemo-draw");
         var slideIndex = 1;
         showSlides(slideIndex);
 
@@ -359,19 +360,21 @@ PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAw
                 document.title = 'Deemo 曲绘集 - by Mashiro';
                 lazyload(n-1);
                 lazyload(n);
+                lazyload(320);
             } else {
                 document.title = (n - 1) + '/' + slides.length + ' | Deemo 曲绘集 - by Mashiro';
                 lazyload(n);
-                lazyload(n-2);
+                console.log(n);
+                var prev = imgArray.length;
+                console.log(n);
+                console.log(prev-1);
+                if (prev-1 == -1) {lazyload(prev-1);}else{lazyload(n-1);}
             }
         }
-
+        
         function lazyload(n) {
-            var imgArray = document.getElementsByTagName("img");
-            var x = imgArray[n].getAttribute("data-src");
-            imgArray[n].setAttribute("src", x);
+            imgArray[n].setAttribute("src", imgArray[n].getAttribute("data-src"));
         }
-
         function saveFile(url) {
             //var filename = url.substring(url.lastIndexOf("/") + 1).split("?")[0];
             var filename = "deemo.png";

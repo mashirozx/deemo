@@ -14,7 +14,7 @@ str = ''
 for f in onlyfiles:
     str = str + '''
        <div class="mySlides fade">
-            <img data-src="trans/''' + f + '''">
+            <img class="deemo-draw" data-src="trans/''' + f + '''">
         </div>'''
 
 data = data.replace('{python-work-area}', str) 
