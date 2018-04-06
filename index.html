@@ -1320,9 +1320,9 @@ PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAw
             slides[slideIndex - 1].style.display = "block";
             if (n == 1) {
                 document.title = 'Deemo 曲绘集 - by Mashiro';
-                lazyload(0);
-                document.title = 'Deemo 曲绘集 - by Mashiro';
+                lazyload(n-1);
                 lazyload(n);
+                lazyload(n-2);
             } else {
                 document.title = (n - 1) + '/' + slides.length + ' | Deemo 曲绘集 - by Mashiro';
                 lazyload(n);
