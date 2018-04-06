@@ -263,10 +263,20 @@
         }
 
     </style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100439904-6"></script>
     <script>
-        if (screen.width <= 500) alert("屏幕宽度在500像素以上才能正常排版，把屏幕横过来试试？");
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-100439904-6');
 
     </script>
+
 </head>
 
 <body>
