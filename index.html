@@ -50,6 +50,7 @@ body {
     color: #333;
     font-size: 16px;
     background-image: url(src/bg.png);
+    background-color: #fff;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -1488,7 +1489,7 @@ body {
             var rand = Math.floor(Math.random() * (imgArray.length + 1));
             //console.log(rand);
             lazyload(rand);
-            plusSlides(rand, true);
+            showSlides(slideIndex = rand);
         }
         randomSlide();
 
