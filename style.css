@@ -24,6 +24,7 @@ body {
     color: #333;
     font-size: 16px;
     background-image: url(src/bg.png);
+    background-color: #fff;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
