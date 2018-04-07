@@ -387,11 +387,6 @@ body {
 
 <body>
     <div class="slideshow-container">
-        <div class="dear-alice">To the lovely, lonely stranger<br>And my dearest brother,<br>Hans.
-            <p>-Alice</p>
-        </div>
-        <div class="signature">Crafted with <img src="src/love.svg" style="height:1em;width:1em" /> by <a href="https://2heng.xin" target="_blank">Mashiro</a></div>
-
         
        <div class="mySlides fade">
             <img class="deemo-draw" data-src="tiny/adpiano01booksprites.png">
@@ -1356,9 +1351,11 @@ body {
 
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
     </div>
-
+    <div class="dear-alice">To the lovely, lonely stranger<br>And my dearest brother,<br>Hans.
+        <p>-Alice</p>
+    </div>
+    <div class="signature">Crafted with <img src="src/love.svg" style="height:1em;width:1em" /> by <a href="https://2heng.xin" target="_blank">Mashiro</a></div>
 
     <div class="photo">
         <a href="javascript:screenshot();">
@@ -1430,7 +1427,7 @@ body {
 
         function plusSlides(n, m = false) {
             showSlides(slideIndex += n);
-            if (!m) int = window.clearInterval(int);
+            try { if (!m) int = window.clearInterval(int); } catch(err) {}
         }
 
         function currentSlide(n) {
@@ -1450,7 +1447,7 @@ body {
                 slides[i].style.display = "none";
             }
             document.title = (slideIndex - 1) + '/' + slides.length + ' | Deemo 复刻 - by Mashiro';
-            console.log(slideIndex - 1);
+            //console.log(slideIndex - 1);
             lazyload(slideIndex - 1);
             lazyload(slideIndex + 1);
             lazyload(slides.length - slideIndex + 2);
@@ -1491,10 +1488,10 @@ body {
             lazyload(rand);
             showSlides(slideIndex = rand);
         }
-        randomSlide();
+        andomSlide();
 
         // Timeout
-        var int = self.setInterval("randomSlide()", 6000);
+        //var int = self.setInterval("randomSlide()", 6000);
 
         function downloadCanvas() {
             var src = document.getElementsByTagName("canvas")[0];
