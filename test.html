@@ -98,14 +98,14 @@
         <div class="popup normal">
             <a class="close" href="#">&times;</a>
             <div class="content">
-                <p>建议用分辨率宽度大于1100px的电脑访问。手机的话把屏幕<img src="src/rotate.svg" style="height:1em;width:1em" />试试？<p>
+                <p>建议用分辨率宽度大于1100px的电脑访问。手机的话把屏幕<img src="src/rotate.svg" style="height:1em;width:1em" />试试？</p>
                 <p>正常视图是这样的~</p>
                 <img src="https://view.moezx.cc/images/2018/04/07/Capture.png" style="width:100%">
             </div>
         </div>
     </div>
 
-    <audio loop="loop" preload="preload" id="player">
+    <audio loop="loop" id="player">
       <source src="src/Riin - Alice good night.mp3" type="audio/mpeg">
     </audio>
 
@@ -118,49 +118,54 @@
             location.href = "#message";
         }
 
-        var imgArray = document.getElementsByClassName("deemo-draw");
-
         var slideIndex = 1;
-        showSlides(slideIndex);
+        var imgTargets = document.getElementsByClassName("deemo-draw");
+        true ? randomSlide() : showSlides(slideIndex);
+        // Timeout
+        var int = self.setInterval("randomSlide()", 6000);
 
-        function plusSlides(n, m = false) {
+        function plusSlides(n) {
             showSlides(slideIndex += n);
-            try { if (!m) int = window.clearInterval(int); } catch(err) {}
+            try {
+                int = window.clearInterval(int);
+            } catch (err) {}
         }
 
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
+        function showSlides() {
             var i;
             var slides = document.getElementsByClassName("mySlides");
-            if (n > slides.length) {
-                slideIndex = 1
-            }
-            if (n < 1) {
-                slideIndex = slides.length
-            }
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
             }
-            document.title = (slideIndex - 1) + '/' + slides.length + ' | Deemo 复刻 - by Mashiro';
-            //console.log(slideIndex - 1);
+            if (slideIndex == 0) {
+                slideIndex = imgTargets.length;
+            } else if (slideIndex == imgTargets.length + 1) {
+                slideIndex = 1;
+            }
+            document.title = (slideIndex) + '/' + slides.length + ' | Deemo 复刻 - by Mashiro';
             lazyload(slideIndex - 1);
-            lazyload(slideIndex + 1);
-            lazyload(slides.length - slideIndex + 2);
+            if (slideIndex < imgTargets.length) {
+                lazyload(slideIndex - 1 + 1);
+            }
+            if (slideIndex > 1) {
+                lazyload(slideIndex - 1 - 1);
+            }
             slides[slideIndex - 1].style.display = "block";
         }
 
         function lazyload(n) {
-            if (n > imgArray.length - 1) n = n - imgArray.length;
             try {
-                imgArray[n].setAttribute("src", imgArray[n].getAttribute("data-src"));
+                imgTargets[n].setAttribute("src", imgTargets[n].getAttribute("data-src"));
             } catch (err) {
                 console.log("error = " + n);
             }
         }
-        lazyload(imgArray.length - 1);
+
+        // Random
+        function randomSlide() {
+            var rand = Math.floor(Math.random() * (imgTargets.length + 1));
+            showSlides(slideIndex = rand);
+        }
 
         function saveFile(url) {
             var filename = "deemo.png";
@@ -178,18 +183,6 @@
             xhr.open('GET', url);
             xhr.send();
         }
-
-        // Random
-        function randomSlide() {
-            var rand = Math.floor(Math.random() * (imgArray.length + 1));
-            //console.log(rand);
-            lazyload(rand);
-            showSlides(slideIndex = rand);
-        }
-        randomSlide();
-
-        // Timeout
-        //var int = self.setInterval("randomSlide()", 6000);
 
         function downloadCanvas() {
             var src = document.getElementsByTagName("canvas")[0];
