@@ -133,9 +133,10 @@
 
         function showSlides() {
             var i;
-            var slides = document.getElementsByClassName("mySlides");
+            var slides = document.getElementsByClassName("mySlides"); 
             for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
+                //slides[i].style.display = "none";
+                slides[i].style.opacity = 0;
             }
             if (slideIndex == 0) {
                 slideIndex = imgTargets.length;
@@ -143,14 +144,17 @@
                 slideIndex = 1;
             }
             document.title = (slideIndex) + '/' + slides.length + ' | Deemo 复刻 - by Mashiro';
-            lazyload(slideIndex - 1);
+            lazyload(slideIndex - 1); 
+            slides[slideIndex - 1].style.opacity = 1; 
+            setTimeout(function(){ 
+                slides[slideIndex - 1].style.display = "block"; 
+            }, 500);
             if (slideIndex < imgTargets.length) {
                 lazyload(slideIndex - 1 + 1);
             }
             if (slideIndex > 1) {
                 lazyload(slideIndex - 1 - 1);
             }
-            slides[slideIndex - 1].style.display = "block";
         }
 
         function lazyload(n) {

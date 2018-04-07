@@ -99,7 +99,12 @@ body {
 .mySlides {
     position: absolute;
     right: 0px;
-    height: 100%
+    height: 100%;
+    opacity: 1;
+    -webkit-transition: opacity 1s; /* Safari */
+    -webkit-transition-timing-function: linear; /* Safari */
+    transition: opacity 1s;
+    transition-timing-function: linear;
 }
 
 img {
@@ -367,6 +372,82 @@ body {
     background-image: url(./src/pause.svg);
 }
 
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #333333;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+
+.pace .pace-progress-inner {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #333333, 0 0 5px #333333;
+  opacity: 1.0;
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+  -moz-transform: rotate(3deg) translate(0px, -4px);
+  -ms-transform: rotate(3deg) translate(0px, -4px);
+  -o-transform: rotate(3deg) translate(0px, -4px);
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+.pace .pace-activity {
+  display: block;
+  position: fixed;
+  z-index: 2000;
+  top: 15px;
+  right: 15px;
+  width: 14px;
+  height: 14px;
+  border: solid 2px transparent;
+  border-top-color: #333333;
+  border-left-color: #333333;
+  border-radius: 10px;
+  -webkit-animation: pace-spinner 400ms linear infinite;
+  -moz-animation: pace-spinner 400ms linear infinite;
+  -ms-animation: pace-spinner 400ms linear infinite;
+  -o-animation: pace-spinner 400ms linear infinite;
+  animation: pace-spinner 400ms linear infinite;
+}
+
+@-webkit-keyframes pace-spinner {
+  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-moz-keyframes pace-spinner {
+  0% { -moz-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-o-keyframes pace-spinner {
+  0% { -o-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-ms-keyframes pace-spinner {
+  0% { -ms-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -ms-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@keyframes pace-spinner {
+  0% { transform: rotate(0deg); transform: rotate(0deg); }
+  100% { transform: rotate(360deg); transform: rotate(360deg); }
+}
 
     </style>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -1435,9 +1516,10 @@ body {
 
         function showSlides() {
             var i;
-            var slides = document.getElementsByClassName("mySlides");
+            var slides = document.getElementsByClassName("mySlides"); 
             for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
+                //slides[i].style.display = "none";
+                slides[i].style.opacity = 0;
             }
             if (slideIndex == 0) {
                 slideIndex = imgTargets.length;
@@ -1445,14 +1527,17 @@ body {
                 slideIndex = 1;
             }
             document.title = (slideIndex) + '/' + slides.length + ' | Deemo 复刻 - by Mashiro';
-            lazyload(slideIndex - 1);
+            lazyload(slideIndex - 1); 
+            slides[slideIndex - 1].style.opacity = 1; 
+            setTimeout(function(){ 
+                slides[slideIndex - 1].style.display = "block"; 
+            }, 500);
             if (slideIndex < imgTargets.length) {
                 lazyload(slideIndex - 1 + 1);
             }
             if (slideIndex > 1) {
                 lazyload(slideIndex - 1 - 1);
             }
-            slides[slideIndex - 1].style.display = "block";
         }
 
         function lazyload(n) {
