@@ -11,4 +11,6 @@
 
 [DEMO](https://seemo.shino.cc)
 
+**已上传创艺工坊，禁止在 Steam 二次配布**，<https://steamcommunity.com/sharedfiles/filedetails/?id=1354774574>
+
 ![](https://view.moezx.cc/images/2018/04/07/Capture.png)
