@@ -90,7 +90,7 @@ img:not([src]) {
     visibility: hidden;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1100px) {
     .dear-alice {
         display: none
     }
