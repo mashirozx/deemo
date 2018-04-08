@@ -219,6 +219,7 @@
             if (randomFlag == 1) {
                 int = self.setInterval("randomSlide()", 6000);
                 document.getElementsByClassName("sand-clock")[0].style.transform = "rotate(20deg)";
+                randomSlide();
                 randomFlag = 0;
             } else {
                 int = window.clearInterval(int);
