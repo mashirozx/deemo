@@ -23,8 +23,16 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="style.css">
     <style>
-        @python-style
+        html,
+        body {
+            background-color: #fff;
+        }
+
+        mashiro, .bt {
+            opacity: 0
+        }
 
     </style>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -44,66 +52,75 @@
 </head>
 
 <body>
-    <div class="slideshow-container">
-        @python-work-area
+    <mashiro>
+        <div class="slideshow-container">
+            @python-work-area
 
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    <div class="dear-alice">To the lovely, lonely stranger<br>And my dearest brother,<br>Hans.
-        <p>-Alice</p>
-    </div>
-    <div class="signature">Crafted with <img src="src/love.svg" style="height:1em;width:1em" alt="love" /> by <a href="https://2heng.xin" target="_blank">Mashiro</a></div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <div class="dear-alice">To the lovely, lonely stranger<br>And my dearest brother,<br>Hans.
+            <p>-Alice</p>
+        </div>
+        <div class="signature">Crafted with <img src="src/love.svg" style="height:0.8em;width:0.8em" alt="love" /> by <a href="https://2heng.xin" target="_blank">Mashiro</a></div>
 
-    <div class="photo">
-        <a href="javascript:screenshot();">
-            <div class="pop"><img src="src/camera.svg" class="css-1bgbwga" data-reactid="50"></div>
-        </a>
-    </div>
-
-    <div class="iplayer">
-        <div class="speaker" id="speaker"></div>
-    </div>
-
-    <div class="github">
-        <a href="https://github.com/mashirozx/deemo" target="_blank">
-            <div class="pop"><img src="src/github.svg" class="css-1bgbwga" data-reactid="50"></div>
-        </a>
-    </div>
-
-    <div class="weibo">
-        <a href="https://weibo.com/2960337711" target="_blank">
-            <div class="pop"><img src="src/weibo.svg" class="css-1bgbwga" data-reactid="50"></div>
-        </a>
-    </div>
-
-    <div class="wordpress">
-        <a href="https://2heng.xin/" target="_blank">
-            <div class="pop"><img src="src/wordpress.svg" class="css-1bgbwga" data-reactid="50"></div>
-        </a>
-    </div>
-
-    <div id="screenshot" class="overlay">
-        <div class="save">
-            <a href="javascript:downloadCanvas();">
-                <div class="pop"><img src="src/save.svg" class="css-1bgbwga" data-reactid="50"></div>
+        <div class="photo bt">
+            <a href="javascript:screenshot();">
+                <div class="pop"><img src="src/camera.svg" class="css-1bgbwga" data-reactid="50"></div>
             </a>
         </div>
-        <div class="popup">
-            <a class="close" href="#">&times;</a>
-            <div id="scerrn-content"></div>
+
+        <div class="iplayer bt">
+            <div class="speaker" id="speaker"></div>
+            <img src="src/pause.svg" style="width:0;height:0;">
         </div>
-    </div>
-    <div id="message" class="overlay">
-        <div class="popup normal">
-            <a class="close" href="#">&times;</a>
-            <div class="content">
-                <p>建议用分辨率宽度大于1100px的电脑访问。手机的话把屏幕<img src="src/rotate.svg" style="height:1em;width:1em" />试试？</p>
-                <p>正常视图是这样的~</p>
-                <img src="https://view.moezx.cc/images/2018/04/07/Capture.png" style="width:100%">
+
+        <div class="random bt">
+            <a href="javascript:randomClick();">
+                <div class="pop"><img src="src/sand-clock.svg" class="sand-clock" data-reactid="50"></div>
+            </a>
+        </div>
+
+        <div class="github bt">
+            <a href="https://github.com/mashirozx/deemo" target="_blank">
+                <div class="pop"><img src="src/github.svg" class="css-1bgbwga" data-reactid="50"></div>
+            </a>
+        </div>
+
+        <div class="weibo bt">
+            <a href="https://weibo.com/2960337711" target="_blank">
+                <div class="pop"><img src="src/weibo.svg" class="css-1bgbwga" data-reactid="50"></div>
+            </a>
+        </div>
+
+        <div class="wordpress bt">
+            <a href="https://2heng.xin/" target="_blank">
+                <div class="pop"><img src="src/wordpress.svg" class="css-1bgbwga" data-reactid="50"></div>
+            </a>
+        </div>
+
+        <div id="screenshot" class="overlay">
+            <div class="save">
+                <a href="javascript:downloadCanvas();">
+                    <div class="pop"><img src="src/save.svg" class="css-1bgbwga" data-reactid="50"></div>
+                </a>
+            </div>
+            <div class="popup">
+                <a class="close" href="#">&times;</a>
+                <div id="scerrn-content"></div>
             </div>
         </div>
-    </div>
+        <div id="message" class="overlay">
+            <div class="popup normal">
+                <a class="close" href="#">&times;</a>
+                <div class="content">
+                    <p>建议用屏幕宽度大于1100px的电脑访问。手机的话把屏幕<img src="src/rotate.svg" style="height:1em;width:1em" />试试？</p>
+                    <p>正常视图是这样的~</p>
+                    <img src="src/Capture.PNG" style="width:100%">
+                </div>
+            </div>
+        </div>
+    </mashiro>
 
     <audio loop="loop" id="player">
       <source src="src/Riin - Alice good night.mp3" type="audio/mpeg">
@@ -120,7 +137,15 @@
 
         var slideIndex = 1;
         var imgTargets = document.getElementsByClassName("deemo-draw");
-        true ? randomSlide() : showSlides(slideIndex);
+
+        Pace.on('done', function() {
+            document.getElementsByTagName("mashiro")[0].style.opacity = "1";
+            true ? randomSlide() : showSlides(slideIndex);
+            for (var i = 0; i < document.getElementsByClassName("bt").length; i++) {
+                document.getElementsByClassName("bt")[i].style.opacity = "1";
+            }
+        });
+
         // Timeout
         var int = self.setInterval("randomSlide()", 6000);
 
@@ -128,33 +153,50 @@
             showSlides(slideIndex += n);
             try {
                 int = window.clearInterval(int);
+                document.getElementsByClassName("sand-clock")[0].style.transform = "rotate(0deg)";
+                randomFlag = 1;
             } catch (err) {}
         }
 
         function showSlides() {
             var i;
-            var slides = document.getElementsByClassName("mySlides"); 
-            for (i = 0; i < slides.length; i++) {
-                //slides[i].style.display = "none";
-                slides[i].style.opacity = 0;
-            }
+            var slides = document.getElementsByClassName("mySlides");
+            // control
             if (slideIndex == 0) {
                 slideIndex = imgTargets.length;
             } else if (slideIndex == imgTargets.length + 1) {
                 slideIndex = 1;
             }
+            // title
             document.title = (slideIndex) + '/' + slides.length + ' | Deemo 复刻 - by Mashiro';
-            lazyload(slideIndex - 1); 
-            slides[slideIndex - 1].style.opacity = 1; 
-            setTimeout(function(){ 
-                slides[slideIndex - 1].style.display = "block"; 
-            }, 500);
-            if (slideIndex < imgTargets.length) {
-                lazyload(slideIndex - 1 + 1);
+            // load
+            lazyload(slideIndex - 1);
+            // hide
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.opacity = 0;
             }
-            if (slideIndex > 1) {
-                lazyload(slideIndex - 1 - 1);
-            }
+            // check load condition
+            imgLoad((slideIndex - 1), function() {
+                // display
+                slides[slideIndex - 1].style.opacity = 1;
+            });
+            // preload
+            //if (slideIndex < imgTargets.length) {
+            //    lazyload(slideIndex - 1 + 1);
+            //}
+            //if (slideIndex > 1) {
+            //    lazyload(slideIndex - 1 - 1);
+            //}
+        }
+
+        // check picture load condition
+        function imgLoad(n, callback) {
+            var timer = setInterval(function() {
+                if (imgTargets[n].complete) {
+                    callback(imgTargets[n]);
+                    clearInterval(timer);
+                }
+            }, 50)
         }
 
         function lazyload(n) {
@@ -169,6 +211,20 @@
         function randomSlide() {
             var rand = Math.floor(Math.random() * (imgTargets.length + 1));
             showSlides(slideIndex = rand);
+        }
+
+        var randomFlag = 0;
+
+        function randomClick() {
+            if (randomFlag == 1) {
+                int = self.setInterval("randomSlide()", 6000);
+                document.getElementsByClassName("sand-clock")[0].style.transform = "rotate(20deg)";
+                randomFlag = 0;
+            } else {
+                int = window.clearInterval(int);
+                document.getElementsByClassName("sand-clock")[0].style.transform = "rotate(0deg)";
+                randomFlag = 1;
+            }
         }
 
         function saveFile(url) {
