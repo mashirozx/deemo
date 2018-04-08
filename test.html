@@ -114,7 +114,7 @@ https://github.com/mashirozx/deemo
         </div>
 
         <div id="screenshot" class="overlay">
-            <div class="save">
+            <div class="save bt">
                 <a href="javascript:downloadCanvas();">
                     <div class="pop"><img src="src/save.svg" class="css-1bgbwga" data-reactid="50"></div>
                 </a>
@@ -266,7 +266,7 @@ https://github.com/mashirozx/deemo
         }
 
         function screenshot() {
-            var sholdHide = new Array("photo", "iplayer", "weibo", "github", "wordpress", "signature", "prev", "next");
+            var sholdHide = new Array("photo", "iplayer", "random", "weibo", "github", "wordpress", "signature", "prev", "next");
             for (var i = 0; i < sholdHide.length; i++) document.getElementsByClassName(sholdHide[i])[0].style.visibility = 'hidden';
 
             html2canvas(document.body).then(function(canvas) {
