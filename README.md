@@ -9,7 +9,7 @@
 
 可在图片目录 `trans` 下任意增减图片，之后运行 `html.py` 会自动把图片导入到 `index.html` 中。
 
-[DEMO](https://seemo.shino.cc)
+[DEMO](https://deemo.shino.cc)
 
 **已上传创艺工坊，禁止在 Steam 二次配布**，<https://steamcommunity.com/sharedfiles/filedetails/?id=1354774574>
 
