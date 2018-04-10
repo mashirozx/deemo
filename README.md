@@ -1,4 +1,4 @@
-Deemo 曲绘集复刻 - by Mashiro
+Deemo 曲绘集复刻
 ===
 ![](https://view.moezx.cc/images/2018/04/07/Capture.png)
 [DEMO](https://deemo.shino.cc)
