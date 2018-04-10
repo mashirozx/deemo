@@ -12,4 +12,4 @@ Deemo 曲绘集复刻
 可在图片目录 `tiny` 下任意增减图片，之后运行 `html.py` 会自动把图片导入到 `index.html` 中。
 
 **已上传 Wallpaper Engine 创艺工坊，勿在 Wallpaper Engine 二次配布**  
-<https://steamcommunity.com/sharedfiles/filedetails/?id=1355941554
+<https://steamcommunity.com/sharedfiles/filedetails/?id=1355941554>
