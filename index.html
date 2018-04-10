@@ -44,7 +44,8 @@ https://github.com/mashirozx/deemo
             background-color: #fff;
         }
 
-        mashiro, .bt {
+        mashiro,
+        .bt {
             opacity: 0
         }
 
@@ -1090,7 +1091,7 @@ https://github.com/mashirozx/deemo
                 <div class="content">
                     <p>建议用屏幕宽度大于1100px的电脑访问。手机的话把屏幕<img src="src/rotate.svg" style="height:1em;width:1em" />试试？</p>
                     <p>正常视图是这样的~</p>
-                    <img src="src/Capture.PNG" style="width:100%">
+                    <img src="src/Capture.png" style="width:100%">
                 </div>
             </div>
         </div>
@@ -1203,7 +1204,10 @@ https://github.com/mashirozx/deemo
         }
 
         function saveFile(url) {
-            var filename = "deemo.png";
+            var date = new Date();
+            var filename = "deemo-";
+            filename = filename + date.getTime();
+            filename = filename + ".png";
             var xhr = new XMLHttpRequest();
             xhr.responseType = 'blob';
             xhr.onload = function() {
@@ -1213,15 +1217,15 @@ https://github.com/mashirozx/deemo
                 a.style.display = 'none';
                 document.body.appendChild(a);
                 a.click();
-                a = null;
+                //a = null;
             };
             xhr.open('GET', url);
             xhr.send();
         }
 
         function downloadCanvas() {
-            var src = document.getElementsByTagName("canvas")[0];
-            var img = src.toDataURL("image/png");
+            var src = document.getElementsByTagName("canvas");
+            var img = src[src.length - 1].toDataURL("image/png");
             saveFile(img);
         }
 
@@ -1229,7 +1233,11 @@ https://github.com/mashirozx/deemo
             var sholdHide = new Array("photo", "iplayer", "random", "weibo", "github", "wordpress", "signature", "prev", "next");
             for (var i = 0; i < sholdHide.length; i++) document.getElementsByClassName(sholdHide[i])[0].style.visibility = 'hidden';
 
-            html2canvas(document.body).then(function(canvas) {
+            let opt = {
+                async: true,
+                useCORS: true
+            };
+            html2canvas(document.body, opt).then(function(canvas) {
                 document.getElementById("scerrn-content").appendChild(canvas);
                 location.href = "#screenshot";
             });
